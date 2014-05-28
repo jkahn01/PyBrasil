@@ -6,10 +6,21 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXFileReference section */
+		965ECBCE19356FC200CA30FF /* Rankings.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = Rankings.py; sourceTree = "<group>"; };
+		965ECBCF1935713000CA30FF /* Brasil.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = Brasil.py; sourceTree = "<group>"; };
+		965ECBD01935724C00CA30FF /* Teams.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = Teams.py; sourceTree = "<group>"; };
+		965ECBD1193572EA00CA30FF /* DraftOrder.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = DraftOrder.py; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
 /* Begin PBXGroup section */
 		965ECBC719356F8500CA30FF = {
 			isa = PBXGroup;
 			children = (
+				965ECBCE19356FC200CA30FF /* Rankings.py */,
+				965ECBCF1935713000CA30FF /* Brasil.py */,
+				965ECBD1193572EA00CA30FF /* DraftOrder.py */,
+				965ECBD01935724C00CA30FF /* Teams.py */,
 			);
 			sourceTree = "<group>";
 		};
