@@ -52,5 +52,6 @@ if __name__ == '__main__':
 	pp = pprint.PrettyPrinter(indent=4)
 	#print("Draft results:")
 	#pp.pprint(draft_results)
+	
 	print("Confidence Results")
 	pp.pprint(confidence)
