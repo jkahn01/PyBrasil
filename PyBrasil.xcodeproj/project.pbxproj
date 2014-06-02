@@ -11,6 +11,7 @@
 		965ECBCF1935713000CA30FF /* Brasil.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = Brasil.py; sourceTree = "<group>"; };
 		965ECBD01935724C00CA30FF /* Teams.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = Teams.py; sourceTree = "<group>"; };
 		965ECBD1193572EA00CA30FF /* DraftOrder.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = DraftOrder.py; sourceTree = "<group>"; };
+		96ECF94919396C150048A08F /* Results.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = Results.py; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -18,6 +19,7 @@
 			isa = PBXGroup;
 			children = (
 				965ECBCE19356FC200CA30FF /* Rankings.py */,
+				96ECF94919396C150048A08F /* Results.py */,
 				965ECBCF1935713000CA30FF /* Brasil.py */,
 				965ECBD1193572EA00CA30FF /* DraftOrder.py */,
 				965ECBD01935724C00CA30FF /* Teams.py */,
