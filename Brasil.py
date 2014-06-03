@@ -38,6 +38,8 @@ def score_confidence(rankings, results):
 		for result in results:
 			if result.Score1FT is None:
 				continue
+			elif result.round.type == '3rd place':
+				continue
 			elif (result.Score1FT > result.Score2FT):
 				scores[manager] += (num_teams - rankings[manager][result.Team1] + 1) * points_for_win
 			elif (result.Score1FT < result.Score2FT):
