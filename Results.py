@@ -22,8 +22,16 @@ def load_results():
 		r.number = round['pos']
 		if 'Matchday' in (round['title']):
 			r.type = 'Group'
+		elif 'Round of 16' in (round['title']):
+			r.type = 'Round of 16'
+		elif 'Quarter-finals' in (round['title']):
+			r.type = 'Quarters'
+		elif 'Semi-finals' in (round['title']):
+			r.type = 'Semis'
 		elif 'Match for third' in (round['title']):
 			r.type = '3rd place'
+		elif 'Final' in (round['title']):
+			r.type = 'Final'
 		else:
 			r.type = 'Elimination'
 		rounds.append(r)
@@ -43,6 +51,19 @@ def load_results():
 			g.round = round
 			results.append(g)
 	return results
+
+def round_value(round):
+	if round == 'Group':
+		return 1
+	elif round == 'Round of 16':
+		return 2
+	elif round == 'Quarters':
+		return 3
+	elif round == 'Semis':
+		return 4
+	elif round == 'Final':
+		return 5
+	return 0
 
 results = load_results()
 

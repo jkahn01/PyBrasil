@@ -5,7 +5,7 @@ import sys, pprint
 from Rankings import rankings
 from Teams import teams
 from DraftOrder import draft_order
-from Results import results
+from Results import results, round_value
 
 num_teams = len(teams)
 points_for_win = 3
@@ -48,12 +48,32 @@ def score_confidence(rankings, results):
 				scores[manager] += ((num_teams - rankings[manager][result.Team1] + 1) * points_for_tie) + ((num_teams - rankings[manager][result.Team2] + 1) * points_for_tie)
 	return scores
 
+def score_draft(draft_results, results):
+	managers = draft_results.keys()
+	scores = {}
+	score_multiplier = 1
+	for manager in managers:
+		if manager not in scores:
+			scores[manager] = 0
+		for result in results:
+			if result.Score1FT is None:
+				continue
+			elif (result.Score1FT + result.Score1OT + result.Score1PK > result.Score2FT + result.Score1OT + result.Score1PK):
+				scores[manager] += points_for_win * draft_results[manager][result.Team1] * round_value(result.round.type) if result.Team1 in draft_results[manager] else 0
+			elif (result.Score1FT + result.Score1OT + result.Score1PK < result.Score2FT + result.Score1OT + result.Score1PK):
+				scores[manager] += points_for_win * draft_results[manager][result.Team2] * round_value(result.round.type) if result.Team2 in draft_results[manager] else 0
+			else:
+				scores[manager] += points_for_tie * draft_results[manager][result.Team1] * round_value(result.round.type) if result.Team1 in draft_results[manager] else 0
+				scores[manager] += points_for_tie * draft_results[manager][result.Team2] * round_value(result.round.type) if result.Team2 in draft_results[manager] else 0
+	return scores
+
+
 if __name__ == '__main__':
 	draft_results = draft(rankings, teams, draft_order)
 	confidence = score_confidence(rankings, results)
+	draft = score_draft(draft_results, results)
 	pp = pprint.PrettyPrinter(indent=4)
-	#print("Draft results:")
-	#pp.pprint(draft_results)
-	
 	print("Confidence Results")
 	pp.pprint(confidence)
+	print("Draft Results")
+	pp.pprint(draft)
