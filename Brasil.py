@@ -82,7 +82,7 @@ if __name__ == '__main__':
         #email results
         subject = 'Latest results'
         from_address = 'noreply@alexalexiou.com'
-        to_addresses = ['alex.alexiou@gmail.com', 'jason.kahn@gmail.com', 'alex2iou@yahoo.com']
+        to_addresses = ['alex.alexiou@gmail.com', 'jason.kahn@gmail.com', 'nick.kapura@gmail.com', 'becker.alan@gmail.com', 'd_orifice@yahoo.com', 'alpascale@gmail.com', 'seth.kipp@gmail.com']
         confidence_string = json.dumps( confidence, sort_keys = True, indent = 2, separators=('\n', ':') )
         msg = MIMEText( confidence_string )
         msg['Subject'] = subject
