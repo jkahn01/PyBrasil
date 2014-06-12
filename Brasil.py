@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 
-import sys, pprint
+import sys, pprint, json, smtplib
 
 from Rankings import rankings
 from Teams import teams
 from DraftOrder import draft_order
 from Results import results, round_value
+from email.mime.text import MIMEText
 
 num_teams = len(teams)
 points_for_win = 3
@@ -77,3 +78,16 @@ if __name__ == '__main__':
 	pp.pprint(confidence)
 	print("Draft Results")
 	pp.pprint(draft)
+
+        #email results
+        subject = 'Latest results'
+        from_address = 'noreply@alexalexiou.com'
+        to_addresses = ['alex.alexiou@gmail.com', 'jason.kahn@gmail.com', 'alex2iou@yahoo.com']
+        confidence_string = json.dumps( confidence, sort_keys = True, indent = 2, separators=('\n', ':') )
+        msg = MIMEText( confidence_string )
+        msg['Subject'] = subject
+        msg['From'] = from_address
+        msg['To'] = ",".join( to_addresses )
+        s = smtplib.SMTP('localhost')
+        s.sendmail( from_address, to_addresses, msg.as_string() )
+        s.quit()
