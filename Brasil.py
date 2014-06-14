@@ -72,7 +72,7 @@ def draft_output(draft_results):
 	ret_val = "Draft results:\n"
 	for manager in sorted(draft_results.keys()):
 		ret_val += manager + ":\t"
-		for team in sorted(draft_results[manager], key=draft_results[manager].get):
+		for team in sorted(draft_results[manager], key=draft_results[manager].get, reverse=True):
 			ret_val += '({0}) {1}\t'.format(draft_results[manager][team], team)
 		ret_val += '\n'
 	ret_val += '\n'
@@ -81,7 +81,7 @@ def draft_output(draft_results):
 def leaderboard_output(leaderboard, type=""):
 	ret_val = "{0}:\n".format(type)
 	i = 0
-	for manager in sorted(leaderboard, key=leaderboard.get):
+	for manager in sorted(leaderboard, key=leaderboard.get, reverse=True):
 		i += 1
 		ret_val += '{0}. {1} {2} pts\n'.format(i, manager.ljust(10), leaderboard[manager])
 	ret_val += '\n'
