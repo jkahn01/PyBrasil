@@ -6,8 +6,29 @@ rounds_url = 'http://footballdb.herokuapp.com/api/v1/event/world.2014/rounds'
 game_base_url = 'http://footballdb.herokuapp.com/api/v1/event/world.2014/round/'
 
 class Game:
+	def reverse (self):
+		g = Game()
+		team = self.Team1
+		g.Team1 = self.Team2
+		g.Score1FT = self.Score2FT
+		g.Score1OT = self.Score2OT
+		g.Score1PK = self.Score2PK
+		g.Team2 = self.Team1
+		g.Score2FT = self.Score1FT
+		g.Score2OT = self.Score2OT
+		g.Score2PK = self.Score2PK
+		g.round = self.round
+		return g
+	
 	def __repr__ (self):
 		return '{0} {1}-{2} {3}'.format(self.Team1, self.Score1FT, self.Score2FT, self.Team2)
+
+	def __eq__ (self, other):
+		return ((self.__dict__ == other.__dict__) or (self.reverse().__dict__ == other.__dict__))
+
+	def __ne__(self, other):
+		return not self.__eq__(other)
+
 
 class Round:
 	pass
@@ -49,7 +70,8 @@ def load_results():
 			g.Score1PK = result["score1p"] if result["score1p"] is not None else 0
 			g.Score2PK = result["score2p"] if result["score2p"] is not None else 0
 			g.round = round
-			results.append(g)
+			if g not in results:
+				results.append(g)
 	return results
 
 def round_value(round):
